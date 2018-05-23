@@ -103,6 +103,34 @@ class Search extends Component {
           <p>{responseText}</p>
         </div>
 
+        <div>
+          <p>Find a book thought process: </p>
+          <pre>
+            <code>
+              {
+                `const library = [{ author: 'Cowlishaw, Mike', dewey: '005.133', title: 'The REXX Language' },
+                { author: 'Sams', dewey: '005.133', title: 'Teach Yourself C++ In 21 Days' },
+                { author: 'Stroustrup., Bjarne', dewey: '005.133', title: 'The C++ Programming Language' },
+                { author: 'Crockford, Douglas', dewey: '005.2762', title: 'JavaScript: The Good Parts' },
+                { author: 'Flanagan, David', dewey: '005.2762', title: 'JavaScript: The Definitive Guide' },
+                { author: 'Schmidt, Meinhard', dewey: '005.44684', title: 'Windows Vista for Dummies' },
+                { author: 'Zondervan', dewey: '220.52081', title: 'NIV Study Bible' },
+                { author:'Humphries, Russell, Dr.', dewey: '231.7652', title: 'Starlight and Time' },
+                { author: 'Jane, Frederick Thomas', dewey: '623.82509051', title: 'Jane's Fighting Ships' },
+                { author: 'Norris, Chuck', dewey: '796.8092', title: 'The Official Chuck Norris Fact Book' }];`
+              }
+            </code>
+          </pre>
+          <p>Given the above data set, how would I implement a searching algorithm on the dewey codes?</p>
+          <ol>
+            <li>Split the dewey decimal of each book into two parts: before and after the decimal.</li>
+            <li>Run a binary search on the before part of the decimal and return a match.</li>
+            <li>If a match is found, run a binary search on the after part of the decimal and return a match.</li>
+            <li>If no match is found during either of the searches, return null.</li>
+            <li>If a match is found in both searches, combine the results at the decimal and return the complete dewey.</li>
+          </ol>
+        </div>
+
       </div>
     );
   }
