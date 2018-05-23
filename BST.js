@@ -130,8 +130,30 @@ class BinarySearchTree {
 
 }
 
+function maxProfit(arr, currMax = 0) {
+
+  if (arr.length === 1) {
+    return `Max profit is: ${currMax}`;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i + j]) {
+        let profit = arr[i + j] - arr[i];
+        if (profit > currMax) {
+          currMax = profit;
+        }
+      }
+    }
+  }
+
+  arr.splice(0, 1);
+  maxProfit(arr, currMax);
+  return `Max profit is: ${currMax}`;
+
+}
+
 function main() {
-  //25 15 50 10 24 35 70 4 12 18 31 44 66 90 22
   let bst = new BinarySearchTree();
   bst.insert(25);
   bst.insert(15);
@@ -149,7 +171,10 @@ function main() {
   bst.insert(90);
   bst.insert(22);
 
-  console.log(bst.dsfPostOrder());
+  // console.log(bst.dsfPostOrder());
+
+  console.log(maxProfit([128, 97, 121, 123, 98, 97, 105]));
+
 }
 
 main();
